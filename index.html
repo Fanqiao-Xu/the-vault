@@ -1,33 +1,90 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Fanqiao Xu | Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanqiao's Vault | Aesthetics & Business</title>
     <style>
-        body { background: #F4F1EA; font-family: "Optima", serif; color: #1A1A1A; margin: 0; }
-        nav { padding: 40px 8%; display: flex; justify-content: space-between; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8em; }
-        .hero { padding: 60px 8% 100px 8%; }
-        .hero h1 { font-size: 4em; font-weight: 300; margin: 0; letter-spacing: -2px; line-height: 1; }
-        .entry { padding: 80px 8%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; background: #EBE7DE; }
-        .entry img { width: 100%; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
-        .btn { display: inline-block; margin-top: 30px; padding: 15px 40px; border: 1px solid #1A1A1A; text-decoration: none; color: #1A1A1A; font-weight: bold; transition: 0.3s; letter-spacing: 1px; }
-        .btn:hover { background: #1A1A1A; color: #F4F1EA; }
+        body { background: #F4F1EA; font-family: "Optima", "Didot", serif; color: #1A1A1A; margin: 0; line-height: 1.6; }
+        nav { padding: 40px; display: flex; justify-content: space-between; align-items: flex-start; }
+        .logo-group { line-height: 1.2; }
+        nav a { text-decoration: none; color: #1A1A1A; font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; margin-left: 30px; border-bottom: 1px solid transparent; transition: 0.3s; }
+        nav a:hover { border-bottom: 1px solid #1A1A1A; }
+
+        .hero { padding: 100px 40px; max-width: 800px; }
+        .hero h1 { font-size: 3.5em; font-weight: 300; margin-bottom: 30px; letter-spacing: -2px; }
+        .bio { font-size: 1.2em; color: #444; margin-bottom: 50px; text-align: justify; }
+
+        .section-header { padding: 20px 40px; font-size: 0.7em; letter-spacing: 4px; text-transform: uppercase; color: #999; border-top: 1px solid #ddd; margin-top: 50px; }
+
+        /* 博文章节排版 */
+        .diary-entry { display: flex; padding: 60px 40px; gap: 60px; align-items: center; border-bottom: 1px solid #eee; }
+        .diary-entry:last-child { border-bottom: none; }
+        .img-container { flex: 1; overflow: hidden; }
+        .img-container img { width: 100%; height: auto; transition: transform 0.8s; }
+        .img-container:hover img { transform: scale(1.05); }
+        .entry-content { flex: 1; max-width: 500px; }
+        .entry-content h2 { font-size: 2em; font-weight: 300; margin: 10px 0 20px 0; }
+        .read-btn { display: inline-block; margin-top: 20px; text-decoration: none; color: #1A1A1A; font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; border: 1px solid #1A1A1A; padding: 12px 25px; transition: 0.3s; }
+        .read-btn:hover { background: #1A1A1A; color: #F4F1EA; }
+
+        footer { text-align: center; padding: 100px 0; font-size: 0.7em; letter-spacing: 3px; opacity: 0.4; }
+
+        @media (max-width: 768px) {
+            .diary-entry { flex-direction: column; padding: 40px 20px; }
+            .hero h1 { font-size: 2.5em; }
+        }
     </style>
 </head>
 <body>
-    <nav><span>Fanqiao Xu</span> <div>Visual Diary / Observations / Profile</div></nav>
-    <div class="hero">
-        <p style="font-style:italic; opacity:0.6; margin-bottom: 20px;">"To be whole, be each thing at least once."</p>
-        <h1>The Analytical<br>Flâneur</h1>
-    </div>
-    <section class="entry">
-        <img src="aalto_house_livingroom.JPG">
+
+    <nav>
+        <div class="logo-group">
+            <span style="letter-spacing:4px; font-weight:bold; display:block;">FANQIAO'S VAULT</span>
+            <span style="font-size:0.6em; opacity:0.5; letter-spacing:1px;">EST. 2026 / LONDON</span>
+        </div>
         <div>
-            <p style="text-transform:uppercase; letter-spacing:3px; font-size:0.7em; opacity:0.5;">Entry 001 / Aesthetics</p>
-            <h2 style="font-weight:300; font-size:2.2em; line-height:1.2;">The Timber Heartbeat in a Digital Wasteland</h2>
-            <a href="diary_aalto.html" class="btn">ENTER THE SANCTUARY →</a>
+            <a href="#insights">Insights</a>
+            <a href="#profile">Profile</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <p style="letter-spacing: 3px; font-size: 0.8em; color: #888;">DIGITAL REFUGE & STRATEGY LAB</p>
+        <h1>Decoding the Moats of Aesthetics.</h1>
+        <p class="bio" id="profile">
+            I am Fanqiao Xu, a visual strategist and business-minded flâneur currently navigating the creative currents of London. 
+            This platform is my digital refuge—a laboratory where I explore the 'Spatial Moats' of modern heritage. I believe that in an era of cold algorithms, the ultimate commercial defense is a 'sensory covenant'.
+        </p>
+    </div>
+
+    <div class="section-header" id="insights">Latest Observations</div>
+    <section class="diary-entry">
+        <div class="img-container">
+            <img src="lvmh_2025.jpg" alt="LVMH Analysis">
+        </div>
+        <div class="entry-content">
+            <p style="text-transform:uppercase; letter-spacing:2px; font-size:0.75em; color:#888;">Entry 002 / Commercial Rigor</p>
+            <h2>LVMH 2025: The Resilience of Luxury</h2>
+            <p>A strategic deep-dive into how LVMH curates scarcity and captures the 'Aspirational Class' through selective retailing.</p>
+            <a href="insight_lvmh.html" class="read-btn">View Analysis →</a>
         </div>
     </section>
+
+    <div class="section-header">Visual Diary</div>
+    <section class="diary-entry">
+        <div class="img-container">
+            <img src="aalto_house_livingroom.JPG" alt="Aalto House">
+        </div>
+        <div class="entry-content">
+            <p style="text-transform:uppercase; letter-spacing:2px; font-size:0.75em; color:#888;">Entry 001 / Aesthetic Pulse</p>
+            <h2>The Timber Heartbeat in a Digital Wasteland</h2>
+            <p>Why we need an "Alvar Aalto" sanctuary today. An exploration of architectural warmth in the age of data.</p>
+            <a href="diary_aalto.html" class="read-btn">Read Story →</a>
+        </div>
+    </section>
+
+    <footer>© 2026 FANQIAO XU / LONDON</footer>
+
 </body>
 </html>
