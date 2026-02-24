@@ -6,30 +6,28 @@
     <title>Fanqiao's Vault | Aesthetics & Business</title>
     <style>
         body { background: #F4F1EA; font-family: "Optima", "Didot", serif; color: #1A1A1A; margin: 0; line-height: 1.6; }
-        nav { padding: 40px; display: flex; justify-content: space-between; align-items: flex-start; }
+        nav { padding: 40px; display: flex; justify-content: space-between; align-items: flex-start; position: sticky; top: 0; background: rgba(244, 241, 234, 0.9); z-index: 1000; }
         .logo-group { line-height: 1.2; }
         nav a { text-decoration: none; color: #1A1A1A; font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; margin-left: 30px; border-bottom: 1px solid transparent; transition: 0.3s; }
         nav a:hover { border-bottom: 1px solid #1A1A1A; }
 
         .hero { padding: 100px 40px; max-width: 800px; }
         .hero h1 { font-size: 3.5em; font-weight: 300; margin-bottom: 30px; letter-spacing: -2px; }
-        .bio { font-size: 1.2em; color: #444; margin-bottom: 50px; text-align: justify; }
+        .bio { font-size: 1.1em; color: #444; margin-bottom: 50px; text-align: justify; }
 
-        .section-header { padding: 20px 40px; font-size: 0.7em; letter-spacing: 4px; text-transform: uppercase; color: #999; border-top: 1px solid #ddd; margin-top: 50px; }
+        .section-header { padding: 20px 40px; font-size: 0.7em; letter-spacing: 4px; text-transform: uppercase; color: #999; border-top: 1px solid #ddd; margin-top: 50px; scroll-margin-top: 120px; }
 
-        /* 博文章节排版 */
         .diary-entry { display: flex; padding: 60px 40px; gap: 60px; align-items: center; border-bottom: 1px solid #eee; }
-        .diary-entry:last-child { border-bottom: none; }
-        .img-container { flex: 1; overflow: hidden; }
-        .img-container img { width: 100%; height: auto; transition: transform 0.8s; }
+        .img-container { flex: 1; overflow: hidden; aspect-ratio: 4/3; background: #eee; }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
         .img-container:hover img { transform: scale(1.05); }
         .entry-content { flex: 1; max-width: 500px; }
-        .entry-content h2 { font-size: 2em; font-weight: 300; margin: 10px 0 20px 0; }
-        .read-btn { display: inline-block; margin-top: 20px; text-decoration: none; color: #1A1A1A; font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; border: 1px solid #1A1A1A; padding: 12px 25px; transition: 0.3s; }
+        .entry-content h2 { font-size: 1.8em; font-weight: 300; margin: 10px 0 20px 0; }
+        .read-btn { display: inline-block; margin-top: 20px; text-decoration: none; color: #1A1A1A; font-size: 0.75em; text-transform: uppercase; letter-spacing: 2px; border: 1px solid #1A1A1A; padding: 10px 20px; transition: 0.3s; }
         .read-btn:hover { background: #1A1A1A; color: #F4F1EA; }
 
         footer { text-align: center; padding: 100px 0; font-size: 0.7em; letter-spacing: 3px; opacity: 0.4; }
-
+        
         @media (max-width: 768px) {
             .diary-entry { flex-direction: column; padding: 40px 20px; }
             .hero h1 { font-size: 2.5em; }
@@ -45,6 +43,7 @@
         </div>
         <div>
             <a href="#insights">Insights</a>
+            <a href="#diary">Visual Diary</a>
             <a href="#profile">Profile</a>
         </div>
     </nav>
@@ -53,34 +52,48 @@
         <p style="letter-spacing: 3px; font-size: 0.8em; color: #888;">DIGITAL REFUGE & STRATEGY LAB</p>
         <h1>Decoding the Moats of Aesthetics.</h1>
         <p class="bio" id="profile">
-            I am Fanqiao Xu, a visual strategist and business-minded flâneur currently navigating the creative currents of London. 
-            This platform is my digital refuge—a laboratory where I explore the 'Spatial Moats' of modern heritage. I believe that in an era of cold algorithms, the ultimate commercial defense is a 'sensory covenant'.
+            I am Fanqiao Xu, a visual strategist currently transitioning into the art curation field in London. 
+            This platform explores the 'Spatial Moats' of modern heritage, balancing commercial rigor with aesthetic pulse.
         </p>
     </div>
 
-    <div class="section-header" id="insights">Latest Observations</div>
+    <div class="section-header" id="diary">Visual Diary</div>
+    
+    <section class="diary-entry">
+        <div class="img-container">
+            <img src="p2.jpg" alt="Goodbye Cardiff">
+        </div>
+        <div class="entry-content">
+            <p style="text-transform:uppercase; letter-spacing:2px; font-size:0.7em; color:#888;">Entry 003 / Narrative</p>
+            <h2>Goodbye, Cardiff.</h2>
+            <p>A year of sensory familiarity. Reflecting on the steady warmth of a city that held me when I needed it most.</p>
+            <a href="diary_cardiff.html" class="read-btn">View Diary →</a>
+        </div>
+    </section>
+
+    <div class="section-header" id="insights">Commercial Insights</div>
+
     <section class="diary-entry">
         <div class="img-container">
             <img src="lvmh_2025.jpg" alt="LVMH Analysis">
         </div>
         <div class="entry-content">
-            <p style="text-transform:uppercase; letter-spacing:2px; font-size:0.75em; color:#888;">Entry 002 / Commercial Rigor</p>
+            <p style="text-transform:uppercase; letter-spacing:2px; font-size:0.7em; color:#888;">Entry 002 / Strategy</p>
             <h2>LVMH 2025: The Resilience of Luxury</h2>
-            <p>A strategic deep-dive into how LVMH curates scarcity and captures the 'Aspirational Class' through selective retailing.</p>
-            <a href="insight_lvmh.html" class="read-btn">View Analysis →</a>
+            <p>A deep-dive into how luxury conglomerates curate scarcity in a shifting global market.</p>
+            <a href="insight_lvmh.html" class="read-btn">Read Analysis →</a>
         </div>
     </section>
 
-    <div class="section-header">Visual Diary</div>
     <section class="diary-entry">
         <div class="img-container">
             <img src="aalto_house_livingroom.JPG" alt="Aalto House">
         </div>
         <div class="entry-content">
-            <p style="text-transform:uppercase; letter-spacing:2px; font-size:0.75em; color:#888;">Entry 001 / Aesthetic Pulse</p>
-            <h2>The Timber Heartbeat in a Digital Wasteland</h2>
-            <p>Why we need an "Alvar Aalto" sanctuary today. An exploration of architectural warmth in the age of data.</p>
-            <a href="diary_aalto.html" class="read-btn">Read Story →</a>
+            <p style="text-transform:uppercase; letter-spacing:2px; font-size:0.7em; color:#888;">Entry 001 / Aesthetics</p>
+            <h2>The Timber Heartbeat</h2>
+            <p>Exploring Alvar Aalto’s sanctuary and the necessity of architectural warmth in a digital era.</p>
+            <a href="diary_aalto.html" class="read-btn">View Diary →</a>
         </div>
     </section>
 
