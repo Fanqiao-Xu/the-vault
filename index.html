@@ -3,101 +3,585 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fanqiao's Vault | Aesthetics & Business</title>
+    <title>Fanqiao Xu — The Vault</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
     <style>
-        body { background: #F4F1EA; font-family: "Optima", "Didot", serif; color: #1A1A1A; margin: 0; line-height: 1.6; }
-        nav { padding: 40px; display: flex; justify-content: space-between; align-items: flex-start; position: sticky; top: 0; background: rgba(244, 241, 234, 0.9); z-index: 1000; }
-        .logo-group { line-height: 1.2; }
-        nav a { text-decoration: none; color: #1A1A1A; font-size: 0.8em; text-transform: uppercase; letter-spacing: 2px; margin-left: 30px; border-bottom: 1px solid transparent; transition: 0.3s; }
-        nav a:hover { border-bottom: 1px solid #1A1A1A; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        .hero { padding: 100px 40px; max-width: 800px; }
-        .hero h1 { font-size: 3.5em; font-weight: 300; margin-bottom: 30px; letter-spacing: -2px; }
-        .bio { font-size: 1.1em; color: #444; margin-bottom: 50px; text-align: justify; }
+        :root {
+            --cream: #F2EEE5;
+            --ink: #1C1917;
+            --dust: #9A9086;
+            --rule: #D6D0C4;
+            --accent: #3D3530;
+        }
 
-        .section-header { padding: 20px 40px; font-size: 0.7em; letter-spacing: 4px; text-transform: uppercase; color: #999; border-top: 1px solid #ddd; margin-top: 50px; scroll-margin-top: 120px; }
+        html { scroll-behavior: smooth; }
 
-        .diary-entry { display: flex; padding: 60px 40px; gap: 60px; align-items: center; border-bottom: 1px solid #eee; }
-        .img-container { flex: 1; overflow: hidden; aspect-ratio: 4/3; background: #eee; }
-        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s; }
-        .img-container:hover img { transform: scale(1.05); }
-        .entry-content { flex: 1; max-width: 500px; }
-        .entry-content h2 { font-size: 1.8em; font-weight: 300; margin: 10px 0 20px 0; }
-        .read-btn { display: inline-block; margin-top: 20px; text-decoration: none; color: #1A1A1A; font-size: 0.75em; text-transform: uppercase; letter-spacing: 2px; border: 1px solid #1A1A1A; padding: 10px 20px; transition: 0.3s; }
-        .read-btn:hover { background: #1A1A1A; color: #F4F1EA; }
+        body {
+            background: var(--cream);
+            font-family: 'EB Garamond', Georgia, serif;
+            color: var(--ink);
+            margin: 0;
+            line-height: 1.7;
+        }
 
-        footer { text-align: center; padding: 100px 0; font-size: 0.7em; letter-spacing: 3px; opacity: 0.4; }
-        
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.5;
+        }
+
+        /* NAV */
+        nav {
+            padding: 28px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(242, 238, 229, 0.95);
+            backdrop-filter: blur(8px);
+            z-index: 100;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95em;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: 300;
+        }
+
+        .nav-links { display: flex; gap: 36px; }
+
+        .nav-links button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--dust);
+            font-size: 0.72em;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-family: 'EB Garamond', serif;
+            transition: color 0.3s;
+            padding: 0;
+            position: relative;
+        }
+
+        .nav-links button::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--ink);
+            transition: width 0.3s;
+        }
+
+        .nav-links button:hover { color: var(--ink); }
+        .nav-links button.active { color: var(--ink); }
+        .nav-links button.active::after { width: 100%; }
+
+        /* HERO */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 88vh;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .hero-text {
+            padding: 80px 56px 80px 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-right: 1px solid var(--rule);
+        }
+
+        .hero-eyebrow {
+            font-size: 0.68em;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--dust);
+            margin-bottom: 28px;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8em, 5vw, 4.8em);
+            font-weight: 300;
+            line-height: 1.08;
+            letter-spacing: -0.02em;
+            margin-bottom: 40px;
+            color: var(--ink);
+        }
+
+        .hero-title em { font-style: italic; font-weight: 300; }
+
+        .hero-bio {
+            font-size: 1.02em;
+            color: #4A4540;
+            line-height: 1.85;
+            max-width: 420px;
+            border-top: 1px solid var(--rule);
+            padding-top: 28px;
+        }
+
+        .hero-bio strong { font-weight: 500; color: var(--ink); }
+
+        .hero-image {
+            position: relative;
+            overflow: hidden;
+            background: #D9D3C7;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(0.85) contrast(1.02);
+            transition: transform 12s ease;
+        }
+
+        .hero-image:hover img { transform: scale(1.03); }
+
+        .hero-image-caption {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            font-size: 0.65em;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+        }
+
+        /* SPATIAL MOATS */
+        .moats-band {
+            padding: 56px 48px;
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 48px;
+            align-items: start;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .moats-label {
+            font-size: 0.65em;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--dust);
+            padding-top: 6px;
+            line-height: 1.8;
+        }
+
+        .moats-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.38em;
+            font-weight: 300;
+            line-height: 1.65;
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .moats-text span {
+            font-style: normal;
+            font-weight: 400;
+            color: var(--ink);
+        }
+
+        /* CONTENT PANELS */
+        .content-panel {
+            display: none;
+            animation: panelIn 0.4s ease forwards;
+        }
+
+        .content-panel.active { display: block; }
+
+        @keyframes panelIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ALL view: show both sections stacked */
+        #panel-all .content-section { border-bottom: 1px solid var(--rule); }
+
+        .content-section { padding: 0 48px; }
+
+        .section-label {
+            padding: 20px 0;
+            font-size: 0.63em;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--dust);
+            border-bottom: 1px solid var(--rule);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Entry layouts */
+        .entry-lead {
+            display: grid;
+            grid-template-columns: 5fr 3fr;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .entry-lead .entry-img {
+            aspect-ratio: 3/2;
+            overflow: hidden;
+            background: #D9D3C7;
+        }
+
+        .entry-lead .entry-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: saturate(0.82) contrast(1.03);
+            transition: transform 0.9s ease;
+        }
+
+        .entry-lead .entry-img:hover img { transform: scale(1.04); }
+
+        .entry-lead .entry-text {
+            padding: 48px 44px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid var(--rule);
+        }
+
+        .entry-text-lead {
+            display: grid;
+            grid-template-columns: 3fr 5fr;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .entry-text-lead .entry-text {
+            padding: 48px 44px 48px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-right: 1px solid var(--rule);
+        }
+
+        .entry-text-lead .entry-img {
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: #D9D3C7;
+        }
+
+        .entry-text-lead .entry-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: saturate(0.82) contrast(1.03);
+            transition: transform 0.9s ease;
+        }
+
+        .entry-text-lead .entry-img:hover img { transform: scale(1.04); }
+
+        .entry-strip {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .entry-strip .entry-img {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: #D9D3C7;
+            grid-column: span 2;
+        }
+
+        .entry-strip .entry-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: saturate(0.82) contrast(1.03);
+            transition: transform 0.9s ease;
+        }
+
+        .entry-strip .entry-img:hover img { transform: scale(1.04); }
+
+        .entry-strip .entry-text {
+            padding: 48px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-left: 1px solid var(--rule);
+        }
+
+        /* Shared text */
+        .entry-tag {
+            font-size: 0.62em;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--dust);
+            margin-bottom: 16px;
+        }
+
+        .entry-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.9em;
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+            margin-bottom: 16px;
+            color: var(--ink);
+        }
+
+        .entry-desc {
+            font-size: 0.93em;
+            color: #5A5450;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .entry-link {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--ink);
+            font-size: 0.68em;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--ink);
+            padding-bottom: 2px;
+            transition: opacity 0.2s;
+            align-self: flex-start;
+        }
+
+        .entry-link:hover { opacity: 0.4; }
+
+        footer {
+            padding: 60px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.65em;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--dust);
+            border-top: 1px solid var(--rule);
+        }
+
+        /* FADE IN on load */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(16px);
+            animation: fadeUp 0.9s ease forwards;
+        }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.3s; }
+
+        /* MOBILE */
         @media (max-width: 768px) {
-            .diary-entry { flex-direction: column; padding: 40px 20px; }
-            .hero h1 { font-size: 2.5em; }
+            nav { padding: 20px 24px; }
+            .nav-links { gap: 20px; }
+            .hero { grid-template-columns: 1fr; min-height: auto; }
+            .hero-text { padding: 56px 24px 48px; border-right: none; border-bottom: 1px solid var(--rule); }
+            .hero-image { height: 60vw; }
+            .moats-band { grid-template-columns: 1fr; gap: 16px; padding: 40px 24px; }
+            .content-section { padding: 0 24px; }
+            .entry-lead, .entry-text-lead { grid-template-columns: 1fr; }
+            .entry-lead .entry-text, .entry-text-lead .entry-text { padding: 32px 0; border: none; }
+            .entry-lead .entry-img { aspect-ratio: 4/3; }
+            .entry-strip { grid-template-columns: 1fr; }
+            .entry-strip .entry-img { grid-column: 1; aspect-ratio: 4/3; }
+            .entry-strip .entry-text { padding: 32px 0; border-left: none; }
+            footer { flex-direction: column; gap: 12px; padding: 40px 24px; text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo-group">
-            <span style="letter-spacing:4px; font-weight:bold; display:block;">FANQIAO'S VAULT</span>
-            <span style="font-size:0.6em; opacity:0.5; letter-spacing:1px;">EST. 2026 / LONDON</span>
-        </div>
-        <div>
-            <a href="#insights">Insights</a>
-            <a href="#diary">Visual Diary</a>
-            <a href="#profile">Profile</a>
+        <a href="index.html" class="nav-logo">Fanqiao's Vault</a>
+        <div class="nav-links">
+            <button onclick="showPanel('all')" class="active" id="btn-all">All</button>
+            <button onclick="showPanel('insights')" id="btn-insights">Insights</button>
+            <button onclick="showPanel('diary')" id="btn-diary">Diary</button>
+            <button onclick="showPanel('profile')" id="btn-profile">Profile</button>
         </div>
     </nav>
 
-    <div class="hero">
-        <p style="letter-spacing: 3px; font-size: 0.8em; color: #888;">DIGITAL REFUGE & STRATEGY LAB</p>
-        <h1>Decoding the Moats of Aesthetics.</h1>
-        <p class="bio" id="profile">
-            I am Fanqiao Xu, a visual strategist currently transitioning into the art curation field in London. 
-            This platform explores the 'Spatial Moats' of modern heritage, balancing commercial rigor with aesthetic pulse.
+    <!-- HERO (always visible) -->
+    <section class="hero" id="hero-section">
+        <div class="hero-text fade-in">
+            <p class="hero-eyebrow">Brand Strategy &amp; Market Analysis — London</p>
+            <h1 class="hero-title">On the things<br>luxury can't<br><em>outsource.</em></h1>
+            <p class="hero-bio">
+                <strong>Fanqiao Xu.</strong> MSc International Economics, Banking &amp; Finance — Cardiff, Distinction.<br><br>
+                This is where I work through ideas that don't fit neatly into a report: why certain brands command premiums that data alone can't explain, and what it takes to build the kind of asset that compounds quietly, in materials and gestures, over decades.
+            </p>
+        </div>
+        <div class="hero-image fade-in">
+            <img src="aalto_house_livingroom.JPG" alt="Aalto House, Helsinki">
+            <span class="hero-image-caption">Aalto House — Helsinki, 2024</span>
+        </div>
+    </section>
+
+    <!-- SPATIAL MOATS (always visible) -->
+    <div class="moats-band" id="moats-section">
+        <p class="moats-label">On<br>Spatial<br>Moats</p>
+        <p class="moats-text">
+            A spatial moat is the kind of brand asset <span>algorithms can observe but never replicate</span> — the capacity of a physical space to produce presence, slowness, and genuine decision in a visitor. Aalto designed it into a tuberculosis sanatorium. Aesop built it into a cosmetics store. The brands that understand the difference between <span>décor and mechanism</span> are building something that doesn't erode.
         </p>
     </div>
 
-    <div class="section-header" id="diary">Visual Diary</div>
-    
-    <section class="diary-entry">
-        <div class="img-container">
-            <img src="p2.jpg" alt="Goodbye Cardiff">
+    <!-- PANEL: ALL -->
+    <div id="panel-all" class="content-panel active">
+        <div class="content-section" style="border-bottom: 1px solid var(--rule);">
+            <div class="section-label">
+                <span>Visual Diary</span>
+                <span style="color: var(--rule);">002 entries</span>
+            </div>
+            <article class="entry-lead">
+                <div class="entry-img"><img src="p2.jpg" alt="Cardiff Bay at dusk"></div>
+                <div class="entry-text">
+                    <p class="entry-tag">Entry 003 / Narrative</p>
+                    <h2 class="entry-title">Goodbye,<br>Cardiff.</h2>
+                    <p class="entry-desc">A year of sensory familiarity. On the steady warmth of a city that held me when I needed it most.</p>
+                    <a href="diary_cardiff.html" class="entry-link">Read →</a>
+                </div>
+            </article>
+            <article class="entry-strip">
+                <div class="entry-img"><img src="aalto_house_outside.JPG" alt="Aalto House exterior"></div>
+                <div class="entry-text">
+                    <p class="entry-tag">Entry 001 / Aesthetics</p>
+                    <h2 class="entry-title">The Timber Heartbeat</h2>
+                    <p class="entry-desc">From Aalto's Paimio Sanatorium to Aesop's handwashing ritual: on the brands that understand space as mechanism, not decoration.</p>
+                    <a href="diary_aalto.html" class="entry-link">Read →</a>
+                </div>
+            </article>
         </div>
-        <div class="entry-content">
-            <p style="text-transform:uppercase; letter-spacing:2px; font-size:0.7em; color:#888;">Entry 003 / Narrative</p>
-            <h2>Goodbye, Cardiff.</h2>
-            <p>A year of sensory familiarity. Reflecting on the steady warmth of a city that held me when I needed it most.</p>
-            <a href="diary_cardiff.html" class="read-btn">View Diary →</a>
+        <div class="content-section">
+            <div class="section-label">
+                <span>Commercial Insights</span>
+                <span style="color: var(--rule);">001 analysis</span>
+            </div>
+            <article class="entry-text-lead">
+                <div class="entry-text">
+                    <p class="entry-tag">Entry 002 / Strategy</p>
+                    <h2 class="entry-title">LVMH 2025:<br>The Resilience<br>of Luxury</h2>
+                    <p class="entry-desc">A deep-dive into how luxury conglomerates curate scarcity in a shifting global market. Data from official annual results; analytical framework my own.</p>
+                    <a href="insight_lvmh.html" class="entry-link">Read Analysis →</a>
+                </div>
+                <div class="entry-img"><img src="lvmh_2025.jpg" alt="LVMH 2025 Analysis"></div>
+            </article>
         </div>
-    </section>
+    </div>
 
-    <div class="section-header" id="insights">Commercial Insights</div>
+    <!-- PANEL: INSIGHTS only -->
+    <div id="panel-insights" class="content-panel">
+        <div class="content-section">
+            <div class="section-label">
+                <span>Commercial Insights</span>
+                <span style="color: var(--rule);">001 analysis</span>
+            </div>
+            <article class="entry-text-lead">
+                <div class="entry-text">
+                    <p class="entry-tag">Entry 002 / Strategy</p>
+                    <h2 class="entry-title">LVMH 2025:<br>The Resilience<br>of Luxury</h2>
+                    <p class="entry-desc">A deep-dive into how luxury conglomerates curate scarcity in a shifting global market. Data from official annual results; analytical framework my own.</p>
+                    <a href="insight_lvmh.html" class="entry-link">Read Analysis →</a>
+                </div>
+                <div class="entry-img"><img src="lvmh_2025.jpg" alt="LVMH 2025 Analysis"></div>
+            </article>
+        </div>
+    </div>
 
-    <section class="diary-entry">
-        <div class="img-container">
-            <img src="lvmh_2025.jpg" alt="LVMH Analysis">
+    <!-- PANEL: DIARY only -->
+    <div id="panel-diary" class="content-panel">
+        <div class="content-section">
+            <div class="section-label">
+                <span>Visual Diary</span>
+                <span style="color: var(--rule);">002 entries</span>
+            </div>
+            <article class="entry-lead">
+                <div class="entry-img"><img src="p2.jpg" alt="Cardiff Bay at dusk"></div>
+                <div class="entry-text">
+                    <p class="entry-tag">Entry 003 / Narrative</p>
+                    <h2 class="entry-title">Goodbye,<br>Cardiff.</h2>
+                    <p class="entry-desc">A year of sensory familiarity. On the steady warmth of a city that held me when I needed it most.</p>
+                    <a href="diary_cardiff.html" class="entry-link">Read →</a>
+                </div>
+            </article>
+            <article class="entry-strip">
+                <div class="entry-img"><img src="aalto_house_outside.JPG" alt="Aalto House exterior"></div>
+                <div class="entry-text">
+                    <p class="entry-tag">Entry 001 / Aesthetics</p>
+                    <h2 class="entry-title">The Timber Heartbeat</h2>
+                    <p class="entry-desc">From Aalto's Paimio Sanatorium to Aesop's handwashing ritual: on the brands that understand space as mechanism, not decoration.</p>
+                    <a href="diary_aalto.html" class="entry-link">Read →</a>
+                </div>
+            </article>
         </div>
-        <div class="entry-content">
-            <p style="text-transform:uppercase; letter-spacing:2px; font-size:0.7em; color:#888;">Entry 002 / Strategy</p>
-            <h2>LVMH 2025: The Resilience of Luxury</h2>
-            <p>A deep-dive into how luxury conglomerates curate scarcity in a shifting global market.</p>
-            <a href="insight_lvmh.html" class="read-btn">Read Analysis →</a>
-        </div>
-    </section>
+    </div>
 
-    <section class="diary-entry">
-        <div class="img-container">
-            <img src="aalto_house_livingroom.JPG" alt="Aalto House">
+    <!-- PANEL: PROFILE -->
+    <div id="panel-profile" class="content-panel">
+        <div style="padding: 80px 48px; max-width: 680px;">
+            <p style="font-size:0.65em; letter-spacing:0.28em; text-transform:uppercase; color:var(--dust); margin-bottom:32px;">Profile</p>
+            <h2 style="font-family:'Cormorant Garamond',serif; font-size:2.8em; font-weight:300; line-height:1.1; margin-bottom:40px; letter-spacing:-0.01em;">Fanqiao Xu</h2>
+            <p style="font-size:1.08em; color:#4A4540; line-height:1.9; border-top:1px solid var(--rule); padding-top:28px;">
+                MSc International Economics, Banking &amp; Finance — University of Cardiff, Distinction.<br><br>
+                Based in London. Focused on brand strategy and market analysis in luxury and fashion — the intersection where qualitative perception and quantitative performance meet.<br><br>
+                This site exists because some ideas don't fit neatly into a report. It's where I think through why certain brands hold their value across decades, what makes a price premium defensible, and how the best companies build assets that aren't visible on a balance sheet.
+            </p>
+            <div style="margin-top:48px; padding-top:28px; border-top:1px solid var(--rule); display:flex; gap:40px; flex-wrap:wrap;">
+                <div>
+                    <p style="font-size:0.6em; letter-spacing:0.22em; text-transform:uppercase; color:var(--dust); margin-bottom:8px;">Education</p>
+                    <p style="font-size:0.92em; color:var(--ink);">MSc International Economics<br>Banking &amp; Finance<br>Cardiff — Distinction</p>
+                </div>
+                <div>
+                    <p style="font-size:0.6em; letter-spacing:0.22em; text-transform:uppercase; color:var(--dust); margin-bottom:8px;">Focus</p>
+                    <p style="font-size:0.92em; color:var(--ink);">Brand Strategy<br>Market Analysis<br>Luxury &amp; Fashion</p>
+                </div>
+                <div>
+                    <p style="font-size:0.6em; letter-spacing:0.22em; text-transform:uppercase; color:var(--dust); margin-bottom:8px;">Based</p>
+                    <p style="font-size:0.92em; color:var(--ink);">London, UK</p>
+                </div>
+            </div>
         </div>
-        <div class="entry-content">
-            <p style="text-transform:uppercase; letter-spacing:2px; font-size:0.7em; color:#888;">Entry 001 / Aesthetics</p>
-            <h2>The Timber Heartbeat</h2>
-            <p>Exploring Alvar Aalto’s sanctuary and the necessity of architectural warmth in a digital era.</p>
-            <a href="diary_aalto.html" class="read-btn">View Diary →</a>
-        </div>
-    </section>
+    </div>
 
-    <footer>© 2026 FANQIAO XU / LONDON</footer>
+    <footer>
+        <span>© 2026 Fanqiao Xu</span>
+        <span>London</span>
+    </footer>
+
+    <script>
+        function showPanel(name) {
+            // hide all panels
+            document.querySelectorAll('.content-panel').forEach(p => p.classList.remove('active'));
+            // deactivate all buttons
+            document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+
+            // show selected panel
+            document.getElementById('panel-' + name).classList.add('active');
+            // activate button
+            document.getElementById('btn-' + name).classList.add('active');
+
+            // hero + moats: hide when on profile, show otherwise
+            const heroSection = document.getElementById('hero-section');
+            const moatsSection = document.getElementById('moats-section');
+            if (name === 'profile') {
+                heroSection.style.display = 'none';
+                moatsSection.style.display = 'none';
+            } else {
+                heroSection.style.display = '';
+                moatsSection.style.display = '';
+            }
+        }
+    </script>
 
 </body>
 </html>
