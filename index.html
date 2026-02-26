@@ -37,7 +37,7 @@
             opacity: 0.5;
         }
 
-        /* NAV */
+        /* ── NAV ── */
         nav {
             padding: 28px 48px;
             display: flex;
@@ -92,11 +92,11 @@
         .nav-links button.active { color: var(--ink); }
         .nav-links button.active::after { width: 100%; }
 
-        /* HERO */
+        /* ── HERO ── */
         .hero {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            min-height: 88vh;
+            height: 88vh;
             border-bottom: 1px solid var(--rule);
         }
 
@@ -123,7 +123,6 @@
             line-height: 1.08;
             letter-spacing: -0.02em;
             margin-bottom: 40px;
-            color: var(--ink);
         }
 
         .hero-title em { font-style: italic; font-weight: 300; }
@@ -142,15 +141,15 @@
         .hero-image {
             position: relative;
             overflow: hidden;
-            background: #D9D3C7;
+            background: #2A2520;
         }
 
         .hero-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: saturate(0.85) contrast(1.02);
-            transition: transform 12s ease;
+            filter: saturate(0.7) contrast(1.08) brightness(0.92);
+            transition: transform 14s ease;
         }
 
         .hero-image:hover img { transform: scale(1.03); }
@@ -162,10 +161,10 @@
             font-size: 0.65em;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.65);
+            color: rgba(255,255,255,0.5);
         }
 
-        /* SPATIAL MOATS */
+        /* ── SPATIAL MOATS ── */
         .moats-band {
             padding: 56px 48px;
             display: grid;
@@ -199,166 +198,217 @@
             color: var(--ink);
         }
 
-        /* CONTENT PANELS */
-        .content-panel {
-            display: none;
-            animation: panelIn 0.4s ease forwards;
-        }
-
+        /* ── PANELS ── */
+        .content-panel { display: none; animation: panelIn 0.4s ease forwards; }
         .content-panel.active { display: block; }
 
         @keyframes panelIn {
-            from { opacity: 0; transform: translateY(12px); }
+            from { opacity: 0; transform: translateY(10px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        /* ALL view: show both sections stacked */
-        #panel-all .content-section { border-bottom: 1px solid var(--rule); }
-
-        .content-section { padding: 0 48px; }
-
-        .section-label {
-            padding: 20px 0;
-            font-size: 0.63em;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: var(--dust);
-            border-bottom: 1px solid var(--rule);
+        /* ── FILTER BAR ── */
+        .filter-bar {
+            padding: 18px 48px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-        }
-
-        /* Entry layouts */
-        .entry-lead {
-            display: grid;
-            grid-template-columns: 5fr 3fr;
+            gap: 0;
             border-bottom: 1px solid var(--rule);
-        }
-
-        .entry-lead .entry-img {
-            aspect-ratio: 3/2;
-            overflow: hidden;
-            background: #D9D3C7;
-        }
-
-        .entry-lead .entry-img img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            filter: saturate(0.82) contrast(1.03);
-            transition: transform 0.9s ease;
-        }
-
-        .entry-lead .entry-img:hover img { transform: scale(1.04); }
-
-        .entry-lead .entry-text {
-            padding: 48px 44px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-left: 1px solid var(--rule);
-        }
-
-        .entry-text-lead {
-            display: grid;
-            grid-template-columns: 3fr 5fr;
-            border-bottom: 1px solid var(--rule);
-        }
-
-        .entry-text-lead .entry-text {
-            padding: 48px 44px 48px 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-right: 1px solid var(--rule);
-        }
-
-        .entry-text-lead .entry-img {
-            aspect-ratio: 4/3;
-            overflow: hidden;
-            background: #D9D3C7;
-        }
-
-        .entry-text-lead .entry-img img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            filter: saturate(0.82) contrast(1.03);
-            transition: transform 0.9s ease;
-        }
-
-        .entry-text-lead .entry-img:hover img { transform: scale(1.04); }
-
-        .entry-strip {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            border-bottom: 1px solid var(--rule);
-        }
-
-        .entry-strip .entry-img {
-            aspect-ratio: 1/1;
-            overflow: hidden;
-            background: #D9D3C7;
-            grid-column: span 2;
-        }
-
-        .entry-strip .entry-img img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            filter: saturate(0.82) contrast(1.03);
-            transition: transform 0.9s ease;
-        }
-
-        .entry-strip .entry-img:hover img { transform: scale(1.04); }
-
-        .entry-strip .entry-text {
-            padding: 48px 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            border-left: 1px solid var(--rule);
-        }
-
-        /* Shared text */
-        .entry-tag {
-            font-size: 0.62em;
-            letter-spacing: 0.22em;
+            font-size: 0.63em;
+            letter-spacing: 0.28em;
             text-transform: uppercase;
             color: var(--dust);
-            margin-bottom: 16px;
         }
 
-        .entry-title {
+        .filter-bar span { margin-right: 32px; }
+
+        .filter-tag {
+            padding: 4px 14px;
+            border: 1px solid var(--rule);
+            margin-right: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--dust);
+            background: none;
+            font-size: inherit;
+            letter-spacing: inherit;
+            text-transform: inherit;
+            font-family: inherit;
+        }
+
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: var(--ink);
+            color: var(--cream);
+            border-color: var(--ink);
+        }
+
+        /* ── EDITORIAL BAND — the core unit ── */
+        /*
+          Each .band is a full-width horizontal strip.
+          To add a new article: duplicate a .band block,
+          swap the img src, href, tag, title, desc. Done.
+        */
+        .band {
+            display: grid;
+            border-bottom: 1px solid var(--rule);
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.3s;
+        }
+
+        .band:hover { background: rgba(28,25,23,0.02); }
+
+        /* Layout A: image left (60%), text right (40%) — default */
+        .band-img-left {
+            grid-template-columns: 60fr 40fr;
+            height: 500px;
+        }
+
+        /* Layout B: image right (55%), text left (45%) */
+        .band-img-right {
+            grid-template-columns: 45fr 55fr;
+            height: 440px;
+        }
+
+        /* Layout C: tall image left (50%), text right (50%) — for portrait images */
+        .band-portrait {
+            grid-template-columns: 50fr 50fr;
+            height: 580px;
+        }
+
+        /* Layout D: doc/analysis — image contained, not cover */
+        .band-doc {
+            grid-template-columns: 55fr 45fr;
+            height: 420px;
+        }
+
+        .band-img {
+            overflow: hidden;
+            position: relative;
+            background: #C8C3BA;
+        }
+
+        .band-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: saturate(0.82) contrast(1.04);
+            transition: transform 1s ease;
+            display: block;
+        }
+
+        .band:hover .band-img img { transform: scale(1.03); }
+
+        /* doc variant: contain the image */
+        .band-img.contained {
+            background: #ECEAE4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .band-img.contained img {
+            width: 82%;
+            height: 82%;
+            object-fit: contain;
+            filter: none;
+            transform: none !important;
+        }
+
+        /* dark image treatment (Cardiff night) */
+        .band-img.dark img {
+            filter: saturate(0.72) contrast(1.08) brightness(0.86);
+        }
+
+        .band-text {
+            padding: 52px 56px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid var(--rule);
+        }
+
+        /* when image is on the right, text has no left border */
+        .band-img-right .band-text {
+            border-left: none;
+            border-right: 1px solid var(--rule);
+            order: -1;
+        }
+
+        .band-meta {
+            font-size: 0.62em;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--dust);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .band-meta-dot {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--rule);
+            display: inline-block;
+        }
+
+        .band-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.9em;
+            font-size: clamp(1.8em, 3vw, 2.6em);
             font-weight: 300;
-            line-height: 1.15;
-            letter-spacing: -0.01em;
-            margin-bottom: 16px;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
             color: var(--ink);
         }
 
-        .entry-desc {
-            font-size: 0.93em;
+        .band-desc {
+            font-size: 0.95em;
             color: #5A5450;
-            line-height: 1.8;
-            margin-bottom: 28px;
+            line-height: 1.85;
+            margin-bottom: 36px;
+            max-width: 360px;
         }
 
-        .entry-link {
-            display: inline-block;
+        .band-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             text-decoration: none;
             color: var(--ink);
             font-size: 0.68em;
             letter-spacing: 0.2em;
             text-transform: uppercase;
+            align-self: flex-start;
             border-bottom: 1px solid var(--ink);
             padding-bottom: 2px;
             transition: opacity 0.2s;
-            align-self: flex-start;
         }
 
-        .entry-link:hover { opacity: 0.4; }
+        .band-link:hover { opacity: 0.45; }
 
+        /* entry number — large faint background numeral */
+        .band-number {
+            position: absolute;
+            top: 20px;
+            left: 24px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 6em;
+            font-weight: 300;
+            color: rgba(255,255,255,0.12);
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        /* ── PROFILE ── */
+        .profile-panel { padding: 80px 48px; max-width: 700px; }
+
+        /* ── FOOTER ── */
         footer {
             padding: 60px 48px;
             display: flex;
@@ -371,31 +421,28 @@
             border-top: 1px solid var(--rule);
         }
 
-        /* FADE IN on load */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(16px);
-            animation: fadeUp 0.9s ease forwards;
-        }
+        .fade-in { opacity: 0; transform: translateY(16px); animation: fadeUp 0.9s ease forwards; }
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
         .fade-in:nth-child(1) { animation-delay: 0.1s; }
         .fade-in:nth-child(2) { animation-delay: 0.3s; }
 
-        /* MOBILE */
+        /* ── MOBILE ── */
         @media (max-width: 768px) {
             nav { padding: 20px 24px; }
-            .nav-links { gap: 20px; }
-            .hero { grid-template-columns: 1fr; min-height: auto; }
+            .nav-links { gap: 16px; }
+            .hero { grid-template-columns: 1fr; height: auto; }
             .hero-text { padding: 56px 24px 48px; border-right: none; border-bottom: 1px solid var(--rule); }
-            .hero-image { height: 60vw; }
+            .hero-image { height: 56vw; min-height: 240px; }
             .moats-band { grid-template-columns: 1fr; gap: 16px; padding: 40px 24px; }
-            .content-section { padding: 0 24px; }
-            .entry-lead, .entry-text-lead { grid-template-columns: 1fr; }
-            .entry-lead .entry-text, .entry-text-lead .entry-text { padding: 32px 0; border: none; }
-            .entry-lead .entry-img { aspect-ratio: 4/3; }
-            .entry-strip { grid-template-columns: 1fr; }
-            .entry-strip .entry-img { grid-column: 1; aspect-ratio: 4/3; }
-            .entry-strip .entry-text { padding: 32px 0; border-left: none; }
+            .filter-bar { padding: 16px 24px; flex-wrap: wrap; gap: 8px; }
+            .band-img-left,
+            .band-img-right,
+            .band-portrait,
+            .band-doc { grid-template-columns: 1fr; height: auto; }
+            .band-img { height: 56vw; min-height: 220px; }
+            .band-text { padding: 32px 24px; border-left: none !important; border-right: none !important; }
+            .band-img-right .band-text { order: 0; }
+            .profile-panel { padding: 48px 24px; }
             footer { flex-direction: column; gap: 12px; padding: 40px 24px; text-align: center; }
         }
     </style>
@@ -412,7 +459,7 @@
         </div>
     </nav>
 
-    <!-- HERO (always visible) -->
+    <!-- HERO -->
     <section class="hero" id="hero-section">
         <div class="hero-text fade-in">
             <p class="hero-eyebrow">Brand Strategy &amp; Market Analysis — London</p>
@@ -423,12 +470,12 @@
             </p>
         </div>
         <div class="hero-image fade-in">
-            <img src="aalto_house_livingroom.JPG" alt="Aalto House, Helsinki">
-            <span class="hero-image-caption">Aalto House — Helsinki, 2024</span>
+            <img src="glass.JPG" alt="Helsinki, 2024">
+            <span class="hero-image-caption">Helsinki, 2024</span>
         </div>
     </section>
 
-    <!-- SPATIAL MOATS (always visible) -->
+    <!-- SPATIAL MOATS -->
     <div class="moats-band" id="moats-section">
         <p class="moats-label">On<br>Spatial<br>Moats</p>
         <p class="moats-text">
@@ -436,99 +483,146 @@
         </p>
     </div>
 
-    <!-- PANEL: ALL -->
+    <!-- ══════════════════════════════════════
+         PANEL: ALL
+         To add a new entry: copy one .band block,
+         update img src, href, tag, title, desc.
+    ══════════════════════════════════════ -->
     <div id="panel-all" class="content-panel active">
-        <div class="content-section" style="border-bottom: 1px solid var(--rule);">
-            <div class="section-label">
-                <span>Visual Diary</span>
-                <span style="color: var(--rule);">002 entries</span>
-            </div>
-            <article class="entry-lead">
-                <div class="entry-img"><img src="p2.jpg" alt="Cardiff Bay at dusk"></div>
-                <div class="entry-text">
-                    <p class="entry-tag">Entry 003 / Narrative</p>
-                    <h2 class="entry-title">Goodbye,<br>Cardiff.</h2>
-                    <p class="entry-desc">A year of sensory familiarity. On the steady warmth of a city that held me when I needed it most.</p>
-                    <a href="diary_cardiff.html" class="entry-link">Read →</a>
-                </div>
-            </article>
-            <article class="entry-strip">
-                <div class="entry-img"><img src="aalto_house_outside.JPG" alt="Aalto House exterior"></div>
-                <div class="entry-text">
-                    <p class="entry-tag">Entry 001 / Aesthetics</p>
-                    <h2 class="entry-title">The Timber Heartbeat</h2>
-                    <p class="entry-desc">From Aalto's Paimio Sanatorium to Aesop's handwashing ritual: on the brands that understand space as mechanism, not decoration.</p>
-                    <a href="diary_aalto.html" class="entry-link">Read →</a>
-                </div>
-            </article>
+
+        <!-- FILTER BAR -->
+        <div class="filter-bar">
+            <span>Filter</span>
+            <button class="filter-tag active" onclick="filterBands('all', this)">All</button>
+            <button class="filter-tag" onclick="filterBands('diary', this)">Diary</button>
+            <button class="filter-tag" onclick="filterBands('strategy', this)">Strategy</button>
+            <button class="filter-tag" onclick="filterBands('aesthetics', this)">Aesthetics</button>
         </div>
-        <div class="content-section">
-            <div class="section-label">
-                <span>Commercial Insights</span>
-                <span style="color: var(--rule);">001 analysis</span>
+
+        <!-- ── BAND 1: Cardiff — portrait, image left, dark treatment ── -->
+        <a href="diary_cardiff.html" class="band band-portrait" data-category="diary" style="text-decoration:none; color:inherit;">
+            <div class="band-img dark" style="position:relative;">
+                <img src="p4.jpeg" alt="Cardiff station at night" style="object-position: center 20%;">
+                <span class="band-number">003</span>
             </div>
-            <article class="entry-text-lead">
-                <div class="entry-text">
-                    <p class="entry-tag">Entry 002 / Strategy</p>
-                    <h2 class="entry-title">LVMH 2025:<br>The Resilience<br>of Luxury</h2>
-                    <p class="entry-desc">A deep-dive into how luxury conglomerates curate scarcity in a shifting global market. Data from official annual results; analytical framework my own.</p>
-                    <a href="insight_lvmh.html" class="entry-link">Read Analysis →</a>
+            <div class="band-text">
+                <div class="band-meta">
+                    <span>Diary</span>
+                    <span class="band-meta-dot"></span>
+                    <span>2025</span>
                 </div>
-                <div class="entry-img"><img src="lvmh_2025.jpg" alt="LVMH 2025 Analysis"></div>
-            </article>
-        </div>
+                <h2 class="band-title">Goodbye,<br>Cardiff.</h2>
+                <p class="band-desc">A year of sensory familiarity. On the steady warmth of a city that held me when I needed it most — and what it means to leave somewhere that has, without your noticing, become home.</p>
+                <span class="band-link">Read →</span>
+            </div>
+        </a>
+
+        <!-- ── BAND 2: LVMH — doc image right, text left ── -->
+        <a href="insight_lvmh.html" class="band band-img-right band-doc" data-category="strategy" style="text-decoration:none; color:inherit;">
+            <div class="band-text">
+                <div class="band-meta">
+                    <span>Strategy</span>
+                    <span class="band-meta-dot"></span>
+                    <span>2025</span>
+                </div>
+                <h2 class="band-title">LVMH 2025:<br>The Resilience<br>of Luxury</h2>
+                <p class="band-desc">A deep-dive into how luxury conglomerates curate scarcity in a shifting global market. Data from official annual results; analytical framework my own.</p>
+                <span class="band-link">Read Analysis →</span>
+            </div>
+            <div class="band-img contained">
+                <img src="lvmh_2025.jpg" alt="LVMH 2025 Analysis">
+            </div>
+        </a>
+
+        <!-- ── BAND 3: Aalto — image left, standard ── -->
+        <a href="diary_aalto.html" class="band band-img-left" data-category="aesthetics" style="text-decoration:none; color:inherit;">
+            <div class="band-img" style="position:relative;">
+                <img src="aalto_house_livingroom.JPG" alt="Aalto House" style="object-position: center 35%;">
+                <span class="band-number">001</span>
+            </div>
+            <div class="band-text">
+                <div class="band-meta">
+                    <span>Aesthetics</span>
+                    <span class="band-meta-dot"></span>
+                    <span>2024</span>
+                </div>
+                <h2 class="band-title">The Timber<br>Heartbeat</h2>
+                <p class="band-desc">From Aalto's Paimio Sanatorium to Aesop's handwashing ritual: on the brands that understand space as mechanism, not decoration.</p>
+                <span class="band-link">Read →</span>
+            </div>
+        </a>
+
+        <!-- ══ ADD NEW ENTRIES BELOW THIS LINE ══
+             Copy the block above, change:
+             - href="your-new-file.html"
+             - data-category="diary / strategy / aesthetics"
+             - img src
+             - band-meta text
+             - band-title
+             - band-desc
+             - Choose layout class: band-img-left / band-img-right / band-portrait / band-doc
+        ══════════════════════════════════════ -->
+
     </div>
 
-    <!-- PANEL: INSIGHTS only -->
+    <!-- PANEL: INSIGHTS -->
     <div id="panel-insights" class="content-panel">
-        <div class="content-section">
-            <div class="section-label">
-                <span>Commercial Insights</span>
-                <span style="color: var(--rule);">001 analysis</span>
-            </div>
-            <article class="entry-text-lead">
-                <div class="entry-text">
-                    <p class="entry-tag">Entry 002 / Strategy</p>
-                    <h2 class="entry-title">LVMH 2025:<br>The Resilience<br>of Luxury</h2>
-                    <p class="entry-desc">A deep-dive into how luxury conglomerates curate scarcity in a shifting global market. Data from official annual results; analytical framework my own.</p>
-                    <a href="insight_lvmh.html" class="entry-link">Read Analysis →</a>
+        <a href="insight_lvmh.html" class="band band-img-right band-doc" data-category="strategy" style="text-decoration:none; color:inherit;">
+            <div class="band-text">
+                <div class="band-meta">
+                    <span>Strategy</span>
+                    <span class="band-meta-dot"></span>
+                    <span>2025</span>
                 </div>
-                <div class="entry-img"><img src="lvmh_2025.jpg" alt="LVMH 2025 Analysis"></div>
-            </article>
-        </div>
+                <h2 class="band-title">LVMH 2025:<br>The Resilience<br>of Luxury</h2>
+                <p class="band-desc">A deep-dive into how luxury conglomerates curate scarcity in a shifting global market. Data from official annual results; analytical framework my own.</p>
+                <span class="band-link">Read Analysis →</span>
+            </div>
+            <div class="band-img contained">
+                <img src="lvmh_2025.jpg" alt="LVMH 2025 Analysis">
+            </div>
+        </a>
     </div>
 
-    <!-- PANEL: DIARY only -->
+    <!-- PANEL: DIARY -->
     <div id="panel-diary" class="content-panel">
-        <div class="content-section">
-            <div class="section-label">
-                <span>Visual Diary</span>
-                <span style="color: var(--rule);">002 entries</span>
+        <a href="diary_cardiff.html" class="band band-portrait" data-category="diary" style="text-decoration:none; color:inherit;">
+            <div class="band-img dark" style="position:relative;">
+                <img src="p4.jpeg" alt="Cardiff station at night" style="object-position: center 20%;">
+                <span class="band-number">003</span>
             </div>
-            <article class="entry-lead">
-                <div class="entry-img"><img src="p2.jpg" alt="Cardiff Bay at dusk"></div>
-                <div class="entry-text">
-                    <p class="entry-tag">Entry 003 / Narrative</p>
-                    <h2 class="entry-title">Goodbye,<br>Cardiff.</h2>
-                    <p class="entry-desc">A year of sensory familiarity. On the steady warmth of a city that held me when I needed it most.</p>
-                    <a href="diary_cardiff.html" class="entry-link">Read →</a>
+            <div class="band-text">
+                <div class="band-meta">
+                    <span>Diary</span>
+                    <span class="band-meta-dot"></span>
+                    <span>2025</span>
                 </div>
-            </article>
-            <article class="entry-strip">
-                <div class="entry-img"><img src="aalto_house_outside.JPG" alt="Aalto House exterior"></div>
-                <div class="entry-text">
-                    <p class="entry-tag">Entry 001 / Aesthetics</p>
-                    <h2 class="entry-title">The Timber Heartbeat</h2>
-                    <p class="entry-desc">From Aalto's Paimio Sanatorium to Aesop's handwashing ritual: on the brands that understand space as mechanism, not decoration.</p>
-                    <a href="diary_aalto.html" class="entry-link">Read →</a>
+                <h2 class="band-title">Goodbye,<br>Cardiff.</h2>
+                <p class="band-desc">A year of sensory familiarity. On the steady warmth of a city that held me when I needed it most.</p>
+                <span class="band-link">Read →</span>
+            </div>
+        </a>
+        <a href="diary_aalto.html" class="band band-img-left" data-category="aesthetics" style="text-decoration:none; color:inherit;">
+            <div class="band-img" style="position:relative;">
+                <img src="aalto_house_livingroom.JPG" alt="Aalto House" style="object-position: center 35%;">
+                <span class="band-number">001</span>
+            </div>
+            <div class="band-text">
+                <div class="band-meta">
+                    <span>Aesthetics</span>
+                    <span class="band-meta-dot"></span>
+                    <span>2024</span>
                 </div>
-            </article>
-        </div>
+                <h2 class="band-title">The Timber<br>Heartbeat</h2>
+                <p class="band-desc">From Aalto's Paimio Sanatorium to Aesop's handwashing ritual: on the brands that understand space as mechanism, not decoration.</p>
+                <span class="band-link">Read →</span>
+            </div>
+        </a>
     </div>
 
     <!-- PANEL: PROFILE -->
     <div id="panel-profile" class="content-panel">
-        <div style="padding: 80px 48px; max-width: 680px;">
+        <div class="profile-panel">
             <p style="font-size:0.65em; letter-spacing:0.28em; text-transform:uppercase; color:var(--dust); margin-bottom:32px;">Profile</p>
             <h2 style="font-family:'Cormorant Garamond',serif; font-size:2.8em; font-weight:300; line-height:1.1; margin-bottom:40px; letter-spacing:-0.01em;">Fanqiao Xu</h2>
             <p style="font-size:1.08em; color:#4A4540; line-height:1.9; border-top:1px solid var(--rule); padding-top:28px;">
@@ -536,18 +630,18 @@
                 Based in London. Focused on brand strategy and market analysis in luxury and fashion — the intersection where qualitative perception and quantitative performance meet.<br><br>
                 This site exists because some ideas don't fit neatly into a report. It's where I think through why certain brands hold their value across decades, what makes a price premium defensible, and how the best companies build assets that aren't visible on a balance sheet.
             </p>
-            <div style="margin-top:48px; padding-top:28px; border-top:1px solid var(--rule); display:flex; gap:40px; flex-wrap:wrap;">
+            <div style="margin-top:48px; padding-top:28px; border-top:1px solid var(--rule); display:flex; gap:48px; flex-wrap:wrap;">
                 <div>
                     <p style="font-size:0.6em; letter-spacing:0.22em; text-transform:uppercase; color:var(--dust); margin-bottom:8px;">Education</p>
-                    <p style="font-size:0.92em; color:var(--ink);">MSc International Economics<br>Banking &amp; Finance<br>Cardiff — Distinction</p>
+                    <p style="font-size:0.92em; color:var(--ink); line-height:1.7;">MSc International Economics<br>Banking &amp; Finance<br>Cardiff — Distinction</p>
                 </div>
                 <div>
                     <p style="font-size:0.6em; letter-spacing:0.22em; text-transform:uppercase; color:var(--dust); margin-bottom:8px;">Focus</p>
-                    <p style="font-size:0.92em; color:var(--ink);">Brand Strategy<br>Market Analysis<br>Luxury &amp; Fashion</p>
+                    <p style="font-size:0.92em; color:var(--ink); line-height:1.7;">Brand Strategy<br>Market Analysis<br>Luxury &amp; Fashion</p>
                 </div>
                 <div>
                     <p style="font-size:0.6em; letter-spacing:0.22em; text-transform:uppercase; color:var(--dust); margin-bottom:8px;">Based</p>
-                    <p style="font-size:0.92em; color:var(--ink);">London, UK</p>
+                    <p style="font-size:0.92em; color:var(--ink); line-height:1.7;">London, UK</p>
                 </div>
             </div>
         </div>
@@ -560,26 +654,31 @@
 
     <script>
         function showPanel(name) {
-            // hide all panels
             document.querySelectorAll('.content-panel').forEach(p => p.classList.remove('active'));
-            // deactivate all buttons
             document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-
-            // show selected panel
             document.getElementById('panel-' + name).classList.add('active');
-            // activate button
             document.getElementById('btn-' + name).classList.add('active');
-
-            // hero + moats: hide when on profile, show otherwise
-            const heroSection = document.getElementById('hero-section');
-            const moatsSection = document.getElementById('moats-section');
+            const hero = document.getElementById('hero-section');
+            const moats = document.getElementById('moats-section');
             if (name === 'profile') {
-                heroSection.style.display = 'none';
-                moatsSection.style.display = 'none';
+                hero.style.display = 'none';
+                moats.style.display = 'none';
             } else {
-                heroSection.style.display = '';
-                moatsSection.style.display = '';
+                hero.style.display = '';
+                moats.style.display = '';
             }
+        }
+
+        function filterBands(category, btn) {
+            document.querySelectorAll('.filter-tag').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('#panel-all .band').forEach(band => {
+                if (category === 'all' || band.dataset.category === category) {
+                    band.style.display = '';
+                } else {
+                    band.style.display = 'none';
+                }
+            });
         }
     </script>
 
