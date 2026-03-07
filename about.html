@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About — The Vault</title>
+    <link rel="stylesheet" href="vault.css">
+    <style>
+        .about-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 96px 52px 120px;
+        }
+
+        .about-label {
+            font-family: 'Jost', sans-serif;
+            font-size: 0.62em;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--pale);
+            display: block;
+            margin-bottom: 64px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        /* photo */
+        .about-img {
+            position: relative;
+        }
+
+        .about-img img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            filter: saturate(0.72) contrast(1.06);
+        }
+
+        /* text side */
+        .about-text {
+            padding-top: 16px;
+        }
+
+        .about-name {
+            font-family: 'Cormorant', serif;
+            font-size: clamp(2.8em, 4.5vw, 4.2em);
+            font-weight: 300;
+            line-height: 1.06;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            margin-bottom: 48px;
+        }
+
+        .about-name em { font-style: italic; }
+
+        .about-bio {
+            font-size: 1.18em;
+            font-weight: 300;
+            color: var(--mid);
+            line-height: 1.95;
+            border-top: 1px solid var(--rule);
+            padding-top: 32px;
+            max-width: 420px;
+        }
+
+        .about-bio p + p { margin-top: 1.4em; }
+
+        /* LinkedIn link */
+        .about-link {
+            display: inline-block;
+            margin-top: 48px;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.62em;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--ink);
+            text-decoration: none;
+            border-bottom: 1px solid var(--ink);
+            padding-bottom: 2px;
+            transition: opacity 0.2s;
+        }
+        .about-link:hover { opacity: 0.45; }
+
+        @media (max-width: 768px) {
+            .about-wrap { padding: 72px 24px 80px; }
+            .about-grid { grid-template-columns: 1fr; gap: 48px; }
+            .about-img img { aspect-ratio: 4/5; }
+        }
+    </style>
+</head>
+<body class="page-wrap">
+
+<nav class="site-nav">
+    <a href="index.html" class="nav-logo">The Vault</a>
+    <div class="nav-links">
+        <a href="index.html">Journal</a>
+        <a href="about.html" class="active">About</a>
+    </div>
+</nav>
+
+<div class="about-wrap">
+    <span class="about-label reveal">About</span>
+
+    <div class="about-grid">
+
+        <div class="about-img reveal">
+            <img src="me.JPG" alt="Fanqiao Xu">
+        </div>
+
+        <div class="about-text">
+            <h1 class="about-name reveal">Fanqiao<br><em>Xu.</em></h1>
+            <div class="about-bio reveal">
+                <p>I came to economics the long way round.</p>
+                <p>The Vault is where I keep the things that protect me — how I see, how I have learned to see, how I will. The aesthetics that wrap around me and make me who I am. A record of staying myself.</p>
+                <p>Based in London. Thinking out loud.</p>
+            </div>
+            <a href="https://www.linkedin.com/in/fanqiao-xu-17881b331" class="about-link reveal" target="_blank" rel="noopener">LinkedIn →</a>
+        </div>
+
+    </div>
+</div>
+
+<footer class="site-footer">
+    <span>The Vault</span>
+    <span>© 2026 Fanqiao Xu — London</span>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+        el.style.transitionDelay = (i * 0.07) + 's';
+        observer.observe(el);
+    });
+</script>
+</body>
+</html>

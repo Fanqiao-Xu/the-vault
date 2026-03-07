@@ -1,0 +1,153 @@
+/* ═══════════════════════════════════════
+   THE VAULT — article page styles
+   Shared by all diary + analysis pages.
+═══════════════════════════════════════ */
+
+.article-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 52px 120px;
+}
+
+/* header */
+.article-header {
+    margin-bottom: 72px;
+    text-align: center;
+}
+
+.article-kicker {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6em;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--pale);
+    display: block;
+    margin-bottom: 24px;
+}
+
+.article-title {
+    font-family: 'Cormorant', serif;
+    font-size: clamp(2.4em, 5vw, 4em);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 20px;
+}
+
+.article-subtitle {
+    font-size: 1.05em;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.7;
+}
+
+/* hero image */
+.article-hero-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 72px;
+    filter: saturate(0.85) contrast(1.02);
+}
+
+/* body text */
+.article-body {
+    font-size: 1.12em;
+    font-weight: 300;
+    line-height: 1.95;
+    color: var(--ink);
+}
+
+.article-body p {
+    margin-bottom: 1.6em;
+}
+
+.article-body em {
+    font-style: italic;
+}
+
+.article-body strong {
+    font-weight: 500;
+}
+
+/* inline images */
+.article-img {
+    width: 100%;
+    margin: 56px 0 12px;
+    display: block;
+    filter: saturate(0.85) contrast(1.02);
+}
+
+.article-img-caption {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.58em;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--pale);
+    margin-bottom: 56px;
+    display: block;
+}
+
+/* two-up images */
+.article-img-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 56px 0;
+}
+
+.article-img-pair img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 3/4;
+    display: block;
+    filter: saturate(0.85) contrast(1.02);
+}
+
+/* pull quote */
+.article-pull {
+    margin: 56px 0;
+    padding: 0 0 0 28px;
+    border-left: 1px solid var(--rule);
+    font-family: 'Cormorant', serif;
+    font-size: 1.35em;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.65;
+}
+
+/* conclusion */
+.article-conclusion {
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+    font-size: 1.05em;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.85;
+    text-align: center;
+}
+
+/* back link */
+.article-back {
+    display: inline-block;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pale);
+    text-decoration: none;
+    margin-bottom: 56px;
+    transition: color 0.2s;
+}
+.article-back:hover { color: var(--ink); }
+
+@media (max-width: 768px) {
+    .article-wrap { padding: 56px 24px 80px; }
+    .article-img-pair { grid-template-columns: 1fr; }
+}
